@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-$LOAD_PATH.push File.expand_path('lib', __dir__)
+lib = File.expand_path('lib', __dir__)
+$LOAD_PATH.push(lib) unless $LOAD_PATH.include?(lib)
 require 'yousign_api/version'
 
 Gem::Specification.new do |s|
@@ -9,7 +10,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Nicolas Rodriguez']
   s.email       = ['nicoladmin@free.fr']
-  s.homepage    = 'https://github.com/n-rodriguez/yousign-api'
+  s.homepage    = 'https://github.com/jbox-web/yousign-api'
   s.summary     = 'Ruby client for YouSign API'
   s.license     = 'MIT'
 
