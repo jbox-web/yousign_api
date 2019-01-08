@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-lib = File.expand_path('lib', __dir__)
-$LOAD_PATH.push(lib) unless $LOAD_PATH.include?(lib)
-require 'yousign_api/version'
+require_relative 'lib/yousign_api/version'
 
 Gem::Specification.new do |s|
   s.name        = 'yousign-api'
@@ -14,7 +12,9 @@ Gem::Specification.new do |s|
   s.summary     = 'Ruby client for YouSign API'
   s.license     = 'MIT'
 
-  s.add_dependency 'savon'
+  s.files = `git ls-files`.split("\n")
+
+  s.add_runtime_dependency 'savon'
 
   s.add_development_dependency 'guard'
   s.add_development_dependency 'guard-rspec'
@@ -22,9 +22,4 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rake'
   s.add_development_dependency 'rspec'
   s.add_development_dependency 'simplecov'
-
-  s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.executables   = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
-  s.require_paths = ['lib']
 end
