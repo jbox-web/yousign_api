@@ -9,6 +9,7 @@ task default: :spec
 task :console do
   require 'pry'
   require 'yousign-api'
+  puts 'Loaded YousignAPI'
   ARGV.clear
   Pry.start
 end
