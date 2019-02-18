@@ -12,6 +12,8 @@ Gem::Specification.new do |s|
   s.summary     = 'Ruby client for YouSign API'
   s.license     = 'MIT'
 
+  s.required_ruby_version = '>= 2.4.0'
+
   s.files = `git ls-files`.split("\n")
 
   s.add_runtime_dependency 'savon'
