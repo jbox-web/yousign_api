@@ -6,7 +6,7 @@ describe YousignApi::File do
     describe 'the second arg must be a list of YousignApi::FileOptions' do
       context 'with invalid params' do
         it 'should raise error' do
-          expect { described_class.new(fixture_path('doc.pdf'), [:foo]) }.to raise_error(YousignApi::InvalidFileOptionsList)
+          expect { described_class.new(fixture_path('doc.pdf'), [:foo]) }.to raise_error(YousignApi::Error::InvalidFileOptionsList)
         end
       end
     end

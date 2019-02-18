@@ -10,7 +10,7 @@ module YousignApi
       @name    = ::File.basename(file)
       @options = options
 
-      raise InvalidFileOptionsList, "Expected a list of YousignApi::FileOptions, got #{options.class}" unless valid_file_options?(options)
+      raise Error::InvalidFileOptionsList, "Expected a list of YousignApi::FileOptions, got #{options.class}" unless valid_file_options?(options)
     end
 
     def to_yousign

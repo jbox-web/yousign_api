@@ -28,4 +28,4 @@ def fixture_path(*args)
   File.join(FIXTURES_PATH, *args)
 end
 
-require 'yousign-api'
+require 'yousign_api'

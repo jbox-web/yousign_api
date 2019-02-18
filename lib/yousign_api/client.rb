@@ -42,11 +42,11 @@ module YousignApi
     end
 
     def signature_init(files_list, signers_list, opts = {})
-      raise InvalidFileList, "Expected a list of YousignApi::File, got #{files_list.class}" unless valid_files_list?(files_list)
-      raise InvalidSignerList, "Expected a list of YousignApi::Signer, got #{signers_list.class}" unless valid_signers_list?(signers_list)
+      raise Error::InvalidFileList, "Expected a list of YousignApi::File, got #{files_list.class}" unless valid_files_list?(files_list)
+      raise Error::InvalidSignerList, "Expected a list of YousignApi::Signer, got #{signers_list.class}" unless valid_signers_list?(signers_list)
 
-      raise EmptyFileList if files_list.empty?
-      raise EmptySignerList if signers_list.empty?
+      raise Error::EmptyFileList if files_list.empty?
+      raise Error::EmptySignerList if signers_list.empty?
 
       message = {
         lstCosignedFile:  files_list.map(&:to_yousign),

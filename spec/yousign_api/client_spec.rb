@@ -127,22 +127,22 @@ describe YousignApi::Client do
     describe 'the first arg must be a list of YousignApi::File' do
       context 'when arg is not an array' do
         it 'should raise error' do
-          expect { client.signature_init({}, [signer]) }.to raise_error(YousignApi::InvalidFileList)
-          expect { client.signature_init('', [signer]) }.to raise_error(YousignApi::InvalidFileList)
-          expect { client.signature_init(:foo, [signer]) }.to raise_error(YousignApi::InvalidFileList)
-          expect { client.signature_init(1, [signer]) }.to raise_error(YousignApi::InvalidFileList)
+          expect { client.signature_init({}, [signer]) }.to raise_error(YousignApi::Error::InvalidFileList)
+          expect { client.signature_init('', [signer]) }.to raise_error(YousignApi::Error::InvalidFileList)
+          expect { client.signature_init(:foo, [signer]) }.to raise_error(YousignApi::Error::InvalidFileList)
+          expect { client.signature_init(1, [signer]) }.to raise_error(YousignApi::Error::InvalidFileList)
         end
       end
 
       context 'when arg is not an array of YouSign::File' do
         it 'should raise error' do
-          expect { client.signature_init([:foo, 'bar'], [signer]) }.to raise_error(YousignApi::InvalidFileList)
+          expect { client.signature_init([:foo, 'bar'], [signer]) }.to raise_error(YousignApi::Error::InvalidFileList)
         end
       end
 
       context 'when arg is empty array' do
         it 'should raise error' do
-          expect { client.signature_init([], [signer]) }.to raise_error(YousignApi::EmptyFileList)
+          expect { client.signature_init([], [signer]) }.to raise_error(YousignApi::Error::EmptyFileList)
         end
       end
     end
@@ -150,22 +150,22 @@ describe YousignApi::Client do
     describe 'the second arg must be a list of YousignApi::Signer' do
       context 'when arg is not an array' do
         it 'should raise error' do
-          expect { client.signature_init([file], {}) }.to raise_error(YousignApi::InvalidSignerList)
-          expect { client.signature_init([file], '') }.to raise_error(YousignApi::InvalidSignerList)
-          expect { client.signature_init([file], :foo) }.to raise_error(YousignApi::InvalidSignerList)
-          expect { client.signature_init([file], 1) }.to raise_error(YousignApi::InvalidSignerList)
+          expect { client.signature_init([file], {}) }.to raise_error(YousignApi::Error::InvalidSignerList)
+          expect { client.signature_init([file], '') }.to raise_error(YousignApi::Error::InvalidSignerList)
+          expect { client.signature_init([file], :foo) }.to raise_error(YousignApi::Error::InvalidSignerList)
+          expect { client.signature_init([file], 1) }.to raise_error(YousignApi::Error::InvalidSignerList)
         end
       end
 
       context 'when arg is not an array of YouSign::Signer' do
         it 'should raise error' do
-          expect { client.signature_init([file], [:foo, 'bar']) }.to raise_error(YousignApi::InvalidSignerList)
+          expect { client.signature_init([file], [:foo, 'bar']) }.to raise_error(YousignApi::Error::InvalidSignerList)
         end
       end
 
       context 'when arg is empty array' do
         it 'should raise error' do
-          expect { client.signature_init([file], []) }.to raise_error(YousignApi::EmptySignerList)
+          expect { client.signature_init([file], []) }.to raise_error(YousignApi::Error::EmptySignerList)
         end
       end
     end

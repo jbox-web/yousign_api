@@ -3,7 +3,7 @@
 require_relative 'lib/yousign_api/version'
 
 Gem::Specification.new do |s|
-  s.name        = 'yousign-api'
+  s.name        = 'yousign_api'
   s.version     = YousignApi::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Nicolas Rodriguez']
@@ -15,6 +15,7 @@ Gem::Specification.new do |s|
   s.files = `git ls-files`.split("\n")
 
   s.add_runtime_dependency 'savon'
+  s.add_runtime_dependency 'zeitwerk'
 
   s.add_development_dependency 'guard-rspec'
   s.add_development_dependency 'pry'
