@@ -19,7 +19,7 @@ module YousignApi
         lastName:           last_name,
         mail:               mail,
         phone:              phone,
-        authenticationMode: authentication_mode
+        authenticationMode: authentication_mode,
       }
     end
 

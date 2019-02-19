@@ -11,6 +11,7 @@ module YousignApi
     attr_reader :username, :password, :api_key, :environment, :soap_options
     attr_reader :env_url, :url_auth, :url_sign, :url_arch
 
+    # rubocop:disable Metrics/AbcSize
     def initialize(opts = {})
       @username     = opts.fetch(:username)
       @password     = opts.fetch(:password)
@@ -18,7 +19,7 @@ module YousignApi
       @environment  = opts.fetch(:environment).to_sym
       @soap_options = opts.fetch(:soap_options, {})
 
-      raise ArgumentError unless ENVIRONMENT.keys.include?(@environment)
+      raise ArgumentError unless ENVIRONMENT.key?(@environment)
 
       @env_url  = ENVIRONMENT[environment]
       @url_auth = "https://#{env_url}/AuthenticationWS/AuthenticationWS?wsdl"
@@ -27,6 +28,7 @@ module YousignApi
 
       set_clients
     end
+    # rubocop:enable Metrics/AbcSize
 
     class << self
 
@@ -41,6 +43,7 @@ module YousignApi
       response.body[:connect_response][:return]
     end
 
+    # rubocop:disable Metrics/LineLength, Metrics/AbcSize
     def signature_init(files_list, signers_list, opts = {})
       raise Error::InvalidFileList, "Expected a list of YousignApi::File, got #{files_list.class}" unless valid_files_list?(files_list)
       raise Error::InvalidSignerList, "Expected a list of YousignApi::Signer, got #{signers_list.class}" unless valid_signers_list?(signers_list)
@@ -65,6 +68,7 @@ module YousignApi
       response = @client_sign.call(:init_cosign, message: message)
       response.body[:init_cosign_response][:return]
     end
+    # rubocop:enable Metrics/LineLength, Metrics/AbcSize
 
     def signature_list(opts = {})
       message = {
@@ -73,7 +77,7 @@ module YousignApi
         count:       opts.fetch(:count, 1000),
         status:      opts.fetch(:status, ''),
         dateBegin:   opts.fetch(:dateBegin, ''),
-        dateEnd:     opts.fetch(:dateEnd, '')
+        dateEnd:     opts.fetch(:dateEnd, ''),
       }
 
       response = @client_sign.call(:get_list_cosign, message: message)
@@ -92,9 +96,9 @@ module YousignApi
 
     def get_signed_files(id_demand, token = '', id_file = '')
       message = {
-       idDemand: id_demand,
-       token:    token,
-       idFile:   id_file,
+        idDemand: id_demand,
+        token:    token,
+        idFile:   id_file,
       }
 
       response = @client_sign.call(:get_cosigned_files_from_demand, message: message)

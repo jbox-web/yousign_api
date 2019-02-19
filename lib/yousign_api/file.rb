@@ -5,6 +5,7 @@ module YousignApi
 
     attr_reader :file, :name, :options
 
+    # rubocop:disable Metrics/LineLength
     def initialize(file, options = [])
       @file    = file
       @name    = ::File.basename(file)
@@ -12,12 +13,13 @@ module YousignApi
 
       raise Error::InvalidFileOptionsList, "Expected a list of YousignApi::FileOptions, got #{options.class}" unless valid_file_options?(options)
     end
+    # rubocop:enable Metrics/LineLength
 
     def to_yousign
       {
         name: name,
         content: encoded_content,
-        visibleOptions: options.map(&:to_yousign)
+        visibleOptions: options.map(&:to_yousign),
       }
     end
 

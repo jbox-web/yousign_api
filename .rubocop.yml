@@ -1,5 +1,26 @@
 AllCops:
-  TargetRubyVersion: 2.5
+  TargetRubyVersion: 2.4
+  Exclude:
+    - bin/*
+    - spec/**/*
+
+Documentation:
+  Enabled: false
+
+Layout/AlignHash:
+  Enabled: false
+
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
 
 Metrics/LineLength:
-  Max: 90
+  Max: 110
+
+Metrics/MethodLength:
+  Max: 15
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
