@@ -4,7 +4,7 @@ require_relative 'lib/yousign_api/version'
 
 Gem::Specification.new do |s|
   s.name        = 'yousign_api'
-  s.version     = YousignApi::VERSION
+  s.version     = YousignApi::VERSION::STRING
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Nicolas Rodriguez']
   s.email       = ['nicoladmin@free.fr']
