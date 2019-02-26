@@ -10,6 +10,9 @@ Documentation:
 Layout/AlignHash:
   Enabled: false
 
+Layout/EmptyLinesAroundModuleBody:
+  Enabled: false
+
 Layout/EmptyLinesAroundClassBody:
   Enabled: false
 
