@@ -4,7 +4,8 @@ require 'digest/sha1'
 require 'savon'
 
 require 'zeitwerk'
-Zeitwerk::Loader.for_gem.setup
+loader = Zeitwerk::Loader.for_gem
+loader.setup
 
 module YousignApi
 end
