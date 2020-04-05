@@ -4,10 +4,10 @@ AllCops:
     - bin/*
     - spec/**/*
 
-Documentation:
+Style/Documentation:
   Enabled: false
 
-Layout/AlignHash:
+Layout/HashAlignment:
   Enabled: false
 
 Layout/EmptyLinesAroundModuleBody:
@@ -16,7 +16,7 @@ Layout/EmptyLinesAroundModuleBody:
 Layout/EmptyLinesAroundClassBody:
   Enabled: false
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 110
 
 Metrics/MethodLength:
@@ -27,3 +27,18 @@ Style/TrailingCommaInArrayLiteral:
 
 Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: comma
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true

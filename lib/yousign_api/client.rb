@@ -43,7 +43,7 @@ module YousignApi
       response.body[:connect_response][:return]
     end
 
-    # rubocop:disable Metrics/LineLength, Metrics/AbcSize
+    # rubocop:disable Layout/LineLength, Metrics/AbcSize
     def signature_init(files_list, signers_list, opts = {})
       raise Error::InvalidFileList, "Expected a list of YousignApi::File, got #{files_list.class}" unless valid_files_list?(files_list)
       raise Error::InvalidSignerList, "Expected a list of YousignApi::Signer, got #{signers_list.class}" unless valid_signers_list?(signers_list)
@@ -68,7 +68,7 @@ module YousignApi
       response = @client_sign.call(:init_cosign, message: message)
       response.body[:init_cosign_response][:return]
     end
-    # rubocop:enable Metrics/LineLength, Metrics/AbcSize
+    # rubocop:enable Layout/LineLength, Metrics/AbcSize
 
     def signature_list(opts = {})
       message = {
