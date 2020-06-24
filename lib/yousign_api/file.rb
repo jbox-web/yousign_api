@@ -26,7 +26,7 @@ module YousignApi
     private
 
     def valid_file_options?(list)
-      list.is_a?(Array) && list.select { |o| !o.is_a?(YousignApi::FileOptions) }.empty?
+      list.is_a?(Array) && list.reject { |o| o.is_a?(YousignApi::FileOptions) }.empty?
     end
 
     def encoded_content

@@ -127,11 +127,11 @@ module YousignApi
     end
 
     def valid_files_list?(list)
-      list.is_a?(Array) && list.select { |o| !o.is_a?(YousignApi::File) }.empty?
+      list.is_a?(Array) && list.reject { |o| o.is_a?(YousignApi::File) }.empty?
     end
 
     def valid_signers_list?(list)
-      list.is_a?(Array) && list.select { |o| !o.is_a?(YousignApi::Signer) }.empty?
+      list.is_a?(Array) && list.reject { |o| o.is_a?(YousignApi::Signer) }.empty?
     end
 
   end
