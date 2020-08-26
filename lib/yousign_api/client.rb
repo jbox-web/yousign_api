@@ -11,7 +11,6 @@ module YousignApi
     attr_reader :username, :password, :api_key, :environment, :soap_options
     attr_reader :env_url, :url_auth, :url_sign, :url_arch
 
-    # rubocop:disable Metrics/AbcSize
     def initialize(opts = {})
       @username     = opts.fetch(:username)
       @password     = opts.fetch(:password)
@@ -28,7 +27,6 @@ module YousignApi
 
       set_clients
     end
-    # rubocop:enable Metrics/AbcSize
 
     class << self
 
