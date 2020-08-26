@@ -238,4 +238,20 @@ describe YousignApi::Client do
       client.signature_list
     end
   end
+
+  describe '#signature_cancel' do
+    it 'should call Yousign API' do
+      client_sign = client.instance_variable_get('@client_sign')
+      response = double('response')
+
+      message = {
+        idDemand: 1000,
+      }
+
+      expect(client_sign).to receive(:call).with(:cancel_cosignature_demand, message: message).and_return(response)
+      expect(response).to receive(:body).and_return({ cancel_cosignature_demand_response: { return: true } })
+
+      client.signature_cancel(1000)
+    end
+  end
 end

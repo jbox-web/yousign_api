@@ -103,6 +103,15 @@ module YousignApi
       response.body[:get_cosigned_files_from_demand_response][:return]
     end
 
+    def signature_cancel(id_demand)
+      message = {
+        idDemand: id_demand,
+      }
+
+      response = @client_sign.call(:cancel_cosignature_demand, message: message)
+      response.body[:cancel_cosignature_demand_response][:return]
+    end
+
     private
 
     def set_clients
