@@ -216,27 +216,26 @@ describe YousignApi::Client do
         client.signature_init([file], [signer])
       end
     end
-
-    describe '#signature_list' do
-      it 'should call Yousign API' do
-        client_sign = client.instance_variable_get('@client_sign')
-        response = double('response')
-
-        message = {
-          search: '',
-          firstResult: '',
-          count: 1000,
-          status: '',
-          dateBegin: '',
-          dateEnd: ''
-        }
-
-        expect(client_sign).to receive(:call).with(:get_list_cosign, message: message).and_return(response)
-        expect(response).to receive(:body).and_return({ get_list_cosign_response: { return: true } })
-
-        client.signature_list
-      end
-    end
   end
 
+  describe '#signature_list' do
+    it 'should call Yousign API' do
+      client_sign = client.instance_variable_get('@client_sign')
+      response = double('response')
+
+      message = {
+        search: '',
+        firstResult: '',
+        count: 1000,
+        status: '',
+        dateBegin: '',
+        dateEnd: ''
+      }
+
+      expect(client_sign).to receive(:call).with(:get_list_cosign, message: message).and_return(response)
+      expect(response).to receive(:body).and_return({ get_list_cosign_response: { return: true } })
+
+      client.signature_list
+    end
+  end
 end
