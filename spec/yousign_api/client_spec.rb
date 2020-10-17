@@ -254,4 +254,23 @@ describe YousignApi::Client do
       client.signature_cancel(1000)
     end
   end
+
+  describe '#alert_cosigners' do
+    it 'should call Yousign API' do
+      client_sign = client.instance_variable_get('@client_sign')
+      response = double('response')
+
+      message = {
+        idDemand: 1000,
+        mailSubject: '',
+        mail: '',
+        language: 'FR',
+      }
+
+      expect(client_sign).to receive(:call).with(:alert_cosigners, message: message).and_return(response)
+      expect(response).to receive(:body).and_return({ alert_cosigners_response: { return: true } })
+
+      client.alert_cosigners(1000)
+    end
+  end
 end

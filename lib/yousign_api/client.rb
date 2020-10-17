@@ -112,6 +112,18 @@ module YousignApi
       response.body[:cancel_cosignature_demand_response][:return]
     end
 
+    def alert_cosigners(id_demand, opts = {})
+      message = {
+        idDemand:    id_demand,
+        mailSubject: opts.fetch(:mailSubject, ''),
+        mail:        opts.fetch(:mail, ''),
+        language:    opts.fetch(:language, 'FR'),
+      }
+
+      response = @client_sign.call(:alert_cosigners, message: message)
+      response.body[:alert_cosigners_response][:return]
+    end
+
     private
 
     def set_clients
